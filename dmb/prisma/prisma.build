@@ -16,13 +16,13 @@ info() { # Print a cyan [INFO]
 prepend() {
     local string="$1"
     local file="$2"
-    printf '%s\n%s' "$string" "$(cat $file)" >$file
+    printf '%s\n%s' "$string" "$(cat $file)" > "$file"
 }
 
 info "Building prisma schema..."
 
 # Sometimes the script fails inexplicably due to some race condition, so we try until it works
-while ! $EXECUTOR $DIR/builder.ts 2> /dev/null; do
+while ! $EXECUTOR "$DIR/builder.ts" 2> /dev/null; do
     sleep 0.1
 done
 

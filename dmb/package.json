@@ -1,55 +1,55 @@
 {
-  "name": "discord-music-bot",
-  "private": true,
-  "version": "6.0.0-alpha",
-  "devDependencies": {
-    "schemix": "^1.15.0",
-    "@stylistic/eslint-plugin": "^1.8.1",
-    "@types/bun": "latest",
-    "typescript-eslint": "^8.35.1",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^8.57.1",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-import-resolver-typescript": "^3.10.1",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-prettier": "latest",
-    "eslint-plugin-promise": "^6.6.0",
-    "dotenv-cli": "^7.4.4"
-  },
-  "prisma": {
-    "seed": "bun ./prisma/seeder.ts"
-  },
-  "scripts": {
-    "lint:prettier": "prettier --check .",
-    "lint:prettier:fix": "prettier --write .",
-    "lint:eslint": "eslint --ext .ts .",
-    "lint:eslint:fix": "eslint --ext .ts . --fix",
-    "prelint": "bun lint:prettier",
-    "lint": "bun lint:eslint",
-    "prelint:fix": "bun lint:prettier:fix",
-    "lint:fix": "bun lint:eslint:fix",
-    "predb:generate": "chmod +x ./prisma/prisma.build && ./prisma/prisma.build",
-    "db:generate": "dotenv -e ../docker/compose/development/.env -- prisma generate",
-    "db:migrate": "dotenv -e ../docker/compose/development/.env -- prisma migrate dev",
-    "db:studio": "dotenv -e ../docker/compose/development/.env -- prisma studio",
-    "db:reset": "dotenv -e ../docker/compose/development/.env -- prisma migrate reset --force",
-    "db:push": "dotenv -e ../docker/compose/development/.env -- prisma db push",
-    "db:seed": "dotenv -e ../docker/compose/development/.env -- prisma db seed",
-    "prestart": "bun i",
-    "start": "bun src/index.ts",
-    "start:dev": "bun i && bun --watch run src/index.ts"
-  },
-  "dependencies": {
-    "@lilybird/handlers": "alpha",
-    "@prisma/client": "5.11.0",
-    "futen": "latest",
-    "lilybird": "alpha",
-    "prisma": "^5.22.0",
-    "shoukaku": "^4.1.1",
-    "typescript": "^5.8.3"
-  },
-  "module": "index.ts",
-  "type": "module"
+    "name": "discord-music-bot",
+    "private": true,
+    "version": "6.0.0-alpha",
+    "devDependencies": {
+        "schemix": "^1.15.0",
+        "@stylistic/eslint-plugin": "^1.8.1",
+        "@types/bun": "latest",
+        "typescript-eslint": "^8.35.1",
+        "@typescript-eslint/eslint-plugin": "^7.18.0",
+        "@typescript-eslint/parser": "^7.18.0",
+        "eslint": "^8.57.1",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-import-resolver-typescript": "^3.10.1",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-n": "^16.6.2",
+        "eslint-plugin-prettier": "latest",
+        "eslint-plugin-promise": "^6.6.0",
+        "dotenv-cli": "^7.4.4"
+    },
+    "prisma": {
+        "seed": "bun ./prisma/seeder.ts"
+    },
+    "scripts": {
+        "lint:prettier": "prettier --check .",
+        "lint:prettier:fix": "prettier --write .",
+        "lint:eslint": "eslint .",
+        "lint:eslint:fix": "eslint . --fix",
+        "prelint": "bun lint:prettier",
+        "lint": "bun lint:eslint",
+        "prelint:fix": "bun lint:prettier:fix",
+        "lint:fix": "bun lint:eslint:fix",
+        "predb:generate": "chmod +x ./prisma/prisma.build && ./prisma/prisma.build",
+        "db:generate": "dotenv -e ../docker/compose/development/.env -- prisma generate",
+        "db:migrate": "dotenv -e ../docker/compose/development/.env -- prisma migrate dev",
+        "db:studio": "dotenv -e ../docker/compose/development/.env -- prisma studio",
+        "db:reset": "dotenv -e ../docker/compose/development/.env -- prisma migrate reset --force",
+        "db:push": "dotenv -e ../docker/compose/development/.env -- prisma db push",
+        "db:seed": "dotenv -e ../docker/compose/development/.env -- prisma db seed",
+        "prestart": "bun i",
+        "start": "bun src/index.ts",
+        "start:dev": "bun i && bun --watch run src/index.ts"
+    },
+    "dependencies": {
+        "@lilybird/handlers": "^0.6.0",
+        "@prisma/client": "5.11.0",
+        "futen": "latest",
+        "lilybird": "^0.8.0",
+        "prisma": "^5.22.0",
+        "shoukaku": "^4.1.1",
+        "typescript": "^5.8.3"
+    },
+    "module": "index.ts",
+    "type": "module"
 }

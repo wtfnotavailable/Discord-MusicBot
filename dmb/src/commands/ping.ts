@@ -1,19 +1,20 @@
-import { SlashCommand } from "@lilybird/handlers";
-import { POSTApplicationCommandStructure } from "lilybird";
+import { $applicationCommand } from '@lilybird/handlers/advanced';
+import { InteractionCallbackType } from 'lilybird';
 
-export default {
-  post: "GLOBAL",
-  data: {
-    name: "ping",
-    description: "Check the bot's ping.",
-  } satisfies POSTApplicationCommandStructure,
-  run: async (interaction) => {
-    await interaction.deferReply();
-
-    const { ws, rest } = await interaction.client.ping();
-
-    await interaction.editReply({
-      content: `🏓 WebSocket: \`${ws}ms\` | Rest: \`${rest}ms\``,
-    });
-  },
-} satisfies SlashCommand;
+$applicationCommand({
+    name: 'ping',
+    description: 'pong',
+    handle: async (client, interaction) => {
+        const { ws, rest } = await client.ping();
+        await client.rest.createInteractionResponse(
+            interaction.id,
+            interaction.token,
+            {
+                type: InteractionCallbackType.CHANNEL_MESSAGE_WITH_SOURCE,
+                data: {
+                    content: `🏓 WebSocket: \`${ws}ms\` | Rest: \`${rest}ms\``,
+                },
+            }
+        );
+    },
+});
